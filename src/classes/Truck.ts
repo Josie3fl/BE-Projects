@@ -11,12 +11,12 @@ class Truck extends Vehicle implements AbleToTow {
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, wheels, and towing capacity
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[]), towingCapacity (number)
   vin: string;
-  color: string;
-  make: string;
-  model: string;
-  year: number;
-  weight: number;
-  topSpeed: number;
+  color!: string;
+  make!: string;
+  model!: string;
+  year!: number;
+  weight!: number;
+  topSpeed!: number;
   wheels: Wheel[];
   towingCapacity: number;
 
@@ -37,15 +37,22 @@ class Truck extends Vehicle implements AbleToTow {
       wheels: Wheel[],
       towingCapacity: number
     ) {
-      super(vin, color, make, model, year, weight, topSpeed);
+      super();
+      this.vin = vin;
+      this.color = color;
+      this.make = make;
+      this.model = model;
+      this.year = year;
+      this.weight = weight;
+      this.topSpeed = topSpeed;      
       this.towingCapacity = towingCapacity;
 
       if (wheels.length !== 4) {
         this.wheels = [
-          new Wheel(18, "Michelin"), // default wheel size and brand
-          new Wheel(18, "Michelin"),
-          new Wheel(18, "Michelin"),
-          new Wheel(18, "Michelin"),
+          new Wheel(), // default wheel size and brand
+          new Wheel(),
+          new Wheel(),
+          new Wheel(),
         ];
       } else {
         this.wheels = wheels;
@@ -57,29 +64,40 @@ class Truck extends Vehicle implements AbleToTow {
     // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
     // TODO: If it is, log that the vehicle is being towed
     // TODO: If it is not, log that the vehicle is too heavy to be towed
-    const vehicleMakeAndModel = `${vehicle.make} ${vehicle.model}`;
+    const vehicleMakeAndModel = (`${vehicle.make} ${vehicle.model}`);
     if (vehicle.weight <= this.towingCapacity) {
       console.log(`${vehicleMakeAndModel} is being towed by the truck.`);
     } else {
       console.log(`${vehicleMakeAndModel} is too heavy to be towed by the truck.`);
     }
   }
-  }
+  
 
   // TODO: Override the printDetails method from the Vehicle class
     // TODO: The method should call the printDetails method of the parent class
     // TODO: The method should log the details of the Truck
     // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
-    printDetails(): void {
-      super.printDetails();
-
+    override printDetails(): void {
+      super.printDetails(); // Call the parent class printDetails method
+      console.log(`VIN: ${this.vin}`);
+      console.log(`Color: ${this.color}`);
+      console.log(`Make: ${this.make}`);
+      console.log(`Model: ${this.model}`);
+      console.log(`Year: ${this.year}`);
+      console.log(`Weight: ${this.weight} kg`);
+      console.log(`Top Speed: ${this.topSpeed} km/h`);
       console.log(`Towing Capacity: ${this.towingCapacity} kg`);
       console.log(`Wheels:`);
+
       this.wheels.forEach((wheel, index) => {
-        console.log(`  Wheel ${index + 1}: ${wheel.size} inches, ${wheel.brand}`);
+        console.log(`Wheel ${index + 1}: ${wheel.size} inches, ${wheel.brand}`);
       });
     }
+  }
+
 
 
 // Export the Truck class as the default export
 export default Truck;
+
+

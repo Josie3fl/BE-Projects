@@ -18,7 +18,9 @@ To install the application go to my github account and or click this link: (comi
 
 Codedex.io
 TA-Chandler Green- in helping me figure out how and where to loctae my files for the Repo
-Turor- 
+Tutor- John A
+TA- Rene Trevino (Debugging the last 5 errors showing up)
 
-## License
+## Link to video
+
 

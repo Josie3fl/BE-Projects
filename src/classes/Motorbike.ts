@@ -7,13 +7,13 @@ class Motorbike extends Vehicle{
   // TODO: Declare properties of the Motorbike class
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, and wheels
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[])
-  vin: string;
-  color: string;
-  make: string;
-  model: string;
-  year: number;
-  weight: number;
-  topSpeed: number;
+  vin!: string;
+  color!: string;
+  make!: string;
+  model!: string;
+  year!: number;
+  weight!: number;
+  topSpeed!: number;
   wheels: Wheel[];
 
 
@@ -32,7 +32,15 @@ class Motorbike extends Vehicle{
       wheels: Wheel[]
     ) {
     
-     super(vin, color, make, model, year, weight, topSpeed);
+     super();
+     this.vin = vin;
+     this.color = color;
+     this.make = make;
+     this.model = model;
+     this.year = year;
+     this.weight = weight;
+     this.topSpeed = topSpeed; 
+
      if (wheels.length !== 2) {
       this.wheels = [new Wheel(18, "Michelin"), new Wheel(18, "Michelin")];
     } else {
@@ -51,11 +59,11 @@ class Motorbike extends Vehicle{
   // TODO: The method should call the printDetails method of the parent class
   // TODO: The method should log the details of the Motorbike
   // TODO: The details should include the VIN, make, model, year, weight, top speed, color, and wheels
-  printDetails(): void {
+  override printDetails(): void {
     super.printDetails();
     console.log(`Wheels:`);
     this.wheels.forEach((wheel, index) => {
-      console.log(`  Wheel ${index + 1}: ${wheel.size} inches, ${wheel.brand}`);
+      console.log(`Wheel ${index + 1}: ${wheel.size} inches, ${wheel.brand}`);
     });
   }
 }
