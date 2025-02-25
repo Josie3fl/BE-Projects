@@ -22,5 +22,6 @@ Tutor- John A
 TA- Rene Trevino (Debugging the last 5 errors showing up)
 
 ## Link to video
+https://www.youtube.com/watch?v=BhevR9gf_kM
 
 
